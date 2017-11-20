@@ -1,0 +1,33 @@
+
+.container {
+    position: relative;
+}
+
+header h1{
+    text-align: center;
+}
+
+.form {
+    float: center;
+}
+
+.pic {
+    float: left;
+    width: 30%;
+}
+
+.form {
+    align-self: center;
+    display: inline-block;
+    width: 69%;
+    vertical-align: top;
+}
+
+label {
+    display: inline-block;
+    width: 10%;
+}
+
+.element {
+    margin: 5px;
+}
