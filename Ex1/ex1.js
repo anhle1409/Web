@@ -1,64 +1,99 @@
 
 function checkNull (name, age, genderValue, jobValue, city) {
-    if ((!name.value) && (!document.getElementById('nameWarn'))){
-        name.style.borderColor = 'red';
-        let nameWrong = document.getElementById('_name');
-        let nameWarn = document.createElement('div');
-        nameWarn.innerHTML = 'Please type your name !';
-        nameWarn.id = 'nameWarn';
-        nameWarn.style.textTransform = 'uppercase';
-        nameWarn.style.marginTop = '5px';
-        nameWrong.appendChild(nameWarn);        
-    } else if ((name.value) && (document.getElementById('nameWarn'))) {
-        name.style.borderColor = '';
-        let nameWarn = document.getElementById('nameWarn');
-        nameWarn.parentNode.removeChild(nameWarn);
-    } else if (name.value) {
-        name.style.borderColor = '';
+    if (!name.value) {
+        if (!document.getElementById('nameWarn')) {
+            name.style.borderColor = 'red';
+            let nameWrong = document.getElementById('_name');
+            let nameWarn = document.createElement('div');
+            nameWarn.innerHTML = 'Please type your name !';
+            nameWarn.id = 'nameWarn';
+            nameWarn.style.textTransform = 'uppercase';
+            nameWarn.style.marginTop = '5px';
+            nameWrong.appendChild(nameWarn);
+            return false; 
+        } else return false;
+    } else {
+        if (document.getElementById('nameWarn')) {
+            name.style.borderColor = '';
+            let nameWarn = document.getElementById('nameWarn');
+            nameWarn.parentNode.removeChild(nameWarn);
+        } else name.style.borderColor = '';
     }
     
-    if ((!age.value) && (!document.getElementById('ageWarn'))){
-        age.style.borderColor = 'red';
-        let ageWrong = document.getElementById('_age');
-        let ageWarn = document.createElement('div');
-        ageWarn.innerHTML = 'Please type your age !';
-        ageWarn.id = 'ageWarn';
-        ageWarn.style.textTransform = 'uppercase';
-        ageWarn.style.marginTop = '5px';
-        ageWrong.appendChild(ageWarn);        
-    } else if ((age.value) && (document.getElementById('ageWarn'))) {
-        age.style.borderColor = '';
-        let ageWarn = document.getElementById('ageWarn');
-        ageWarn.parentNode.removeChild(ageWarn);
-    } else if (age.value) {
-        age.style.borderColor = '';
+    if (!age.value) {
+        if (!document.getElementById('ageWarn')) {
+            age.style.borderColor = 'red';
+            let ageWrong = document.getElementById('_age');
+            let ageWarn = document.createElement('div');
+            ageWarn.innerHTML = 'Please type your age !';
+            ageWarn.id = 'ageWarn';
+            ageWarn.style.textTransform = 'uppercase';
+            ageWarn.style.marginTop = '5px';
+            ageWrong.appendChild(ageWarn);     
+            return false;  
+        } else return false;        
+    } else {
+        if (age.value <= 0) {
+            if (!document.getElementById('ageWarn')) {
+                age.style.borderColor = 'red';
+                let ageWrong = document.getElementById('_age');
+                let ageWarn = document.createElement('div');
+                ageWarn.innerHTML = 'Age must be larger than 0 !';
+                ageWarn.id = 'ageWarn';
+                ageWarn.style.textTransform = 'uppercase';
+                ageWarn.style.marginTop = '5px';
+                ageWrong.appendChild(ageWarn);     
+                return false;  
+            } else {
+                ageWarn.innerHTML = 'Age must be larger than 0 !';
+                return false;     
+            }   
+        } else {
+            if (document.getElementById('ageWarn')) {
+                age.style.borderColor = '';
+                let ageWarn = document.getElementById('ageWarn');
+                ageWarn.parentNode.removeChild(ageWarn);
+            } else age.style.borderColor = '';
+        } 
     }
     
-    if ((!genderValue) && (!document.getElementById('genderWarn'))){
-        let genderWrong = document.getElementById('_gender');
-        let genderWarn = document.createElement('div');
-        genderWarn.innerHTML = 'Please select your gender !';
-        genderWarn.id = 'genderWarn';
-        genderWarn.style.textTransform = 'uppercase';
-        genderWarn.style.marginTop = '5px';
-        genderWrong.appendChild(genderWarn);        
-    } else if ((genderValue) && (document.getElementById('genderWarn'))) {
-        let genderWarn = document.getElementById('genderWarn');
-        genderWarn.parentNode.removeChild(genderWarn);
+    if (!genderValue) {
+        if (!document.getElementById('genderWarn')) {
+            let genderWrong = document.getElementById('_gender');
+            let genderWarn = document.createElement('div');
+            genderWarn.innerHTML = 'Please select your gender !';
+            genderWarn.id = 'genderWarn';
+            genderWarn.style.textTransform = 'uppercase';
+            genderWarn.style.marginTop = '5px';
+            genderWrong.appendChild(genderWarn);  
+            
+        } else return false; 
+    } else {
+        if (document.getElementById('genderWarn')) {
+            let genderWarn = document.getElementById('genderWarn');
+            genderWarn.parentNode.removeChild(genderWarn);
+        }
     }
 
-    if ((!jobValue.length) && (!document.getElementById('jobWarn'))){
-        let jobWrong = document.getElementById('_job');
-        let jobWarn = document.createElement('div');
-        jobWarn.innerHTML = 'Please select your job !';
-        jobWarn.id = 'jobWarn';
-        jobWarn.style.textTransform = 'uppercase';
-        jobWarn.style.marginTop = '5px';
-        jobWrong.appendChild(jobWarn);        
-    } else if ((jobValue.length) && (document.getElementById('jobWarn'))) {
-        let jobWarn = document.getElementById('jobWarn');
-        jobWarn.parentNode.removeChild(jobWarn);
+    if (!jobValue.length) {
+        if (!document.getElementById('jobWarn')) {
+            let jobWrong = document.getElementById('_job');
+            let jobWarn = document.createElement('div');
+            jobWarn.innerHTML = 'Please select your job !';
+            jobWarn.id = 'jobWarn';
+            jobWarn.style.textTransform = 'uppercase';
+            jobWarn.style.marginTop = '5px';
+            jobWrong.appendChild(jobWarn);  
+            return false;  
+        }  else return false;        
+    } else {
+        if (document.getElementById('jobWarn')) {
+            let jobWarn = document.getElementById('jobWarn');
+            jobWarn.parentNode.removeChild(jobWarn);
+        }
     }
+
+    return true;
 
 }
 
@@ -81,9 +116,11 @@ function submitted() {
     }
     var city =  document.getElementById("city");
 
-    checkNull(name, age, genderValue, jobValue, city);
+    // checkNull(name, age, genderValue, jobValue, city);
 
-    alert('Name: ' + name.value +  '\nAge: ' + age.value +  '\nGender: ' + genderValue + '\nJob: ' + jobValue + '\nCity: ' + city.value);
+    if (!checkNull(name, age, genderValue, jobValue, city))
+        return false;
+    else alert('Name: ' + name.value +  '\nAge: ' + age.value +  '\nGender: ' + genderValue + '\nJob: ' + jobValue + '\nCity: ' + city.value);
 }
 var button = document.getElementById("submitButton");
 button.addEventListener("click", submitted);
