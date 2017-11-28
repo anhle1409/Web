@@ -1,6 +1,8 @@
 
 function checkNull (name, age, genderValue, jobValue, city) {
+    var valid = true;
     if (!name.value) {
+        valid = false;
         if (!document.getElementById('nameWarn')) {
             name.style.borderColor = 'red';
             let nameWrong = document.getElementById('_name');
@@ -10,8 +12,7 @@ function checkNull (name, age, genderValue, jobValue, city) {
             nameWarn.style.textTransform = 'uppercase';
             nameWarn.style.marginTop = '5px';
             nameWrong.appendChild(nameWarn);
-            return false; 
-        } else return false;
+        }
     } else {
         if (document.getElementById('nameWarn')) {
             name.style.borderColor = '';
@@ -21,6 +22,7 @@ function checkNull (name, age, genderValue, jobValue, city) {
     }
     
     if (!age.value) {
+        valid = false;
         if (!document.getElementById('ageWarn')) {
             age.style.borderColor = 'red';
             let ageWrong = document.getElementById('_age');
@@ -30,10 +32,10 @@ function checkNull (name, age, genderValue, jobValue, city) {
             ageWarn.style.textTransform = 'uppercase';
             ageWarn.style.marginTop = '5px';
             ageWrong.appendChild(ageWarn);     
-            return false;  
-        } else return false;        
+        }     
     } else {
         if (age.value <= 0) {
+            valid = false;
             if (!document.getElementById('ageWarn')) {
                 age.style.borderColor = 'red';
                 let ageWrong = document.getElementById('_age');
@@ -43,10 +45,8 @@ function checkNull (name, age, genderValue, jobValue, city) {
                 ageWarn.style.textTransform = 'uppercase';
                 ageWarn.style.marginTop = '5px';
                 ageWrong.appendChild(ageWarn);     
-                return false;  
             } else {
-                ageWarn.innerHTML = 'Age must be larger than 0 !';
-                return false;     
+                ageWarn.innerHTML = 'Age must be larger than 0 !';   
             }   
         } else {
             if (document.getElementById('ageWarn')) {
@@ -58,6 +58,7 @@ function checkNull (name, age, genderValue, jobValue, city) {
     }
     
     if (!genderValue) {
+        valid = false;
         if (!document.getElementById('genderWarn')) {
             let genderWrong = document.getElementById('_gender');
             let genderWarn = document.createElement('div');
@@ -65,9 +66,8 @@ function checkNull (name, age, genderValue, jobValue, city) {
             genderWarn.id = 'genderWarn';
             genderWarn.style.textTransform = 'uppercase';
             genderWarn.style.marginTop = '5px';
-            genderWrong.appendChild(genderWarn);  
-            
-        } else return false; 
+            genderWrong.appendChild(genderWarn);     
+        }
     } else {
         if (document.getElementById('genderWarn')) {
             let genderWarn = document.getElementById('genderWarn');
@@ -76,6 +76,7 @@ function checkNull (name, age, genderValue, jobValue, city) {
     }
 
     if (!jobValue.length) {
+        valid = false;
         if (!document.getElementById('jobWarn')) {
             let jobWrong = document.getElementById('_job');
             let jobWarn = document.createElement('div');
@@ -83,9 +84,8 @@ function checkNull (name, age, genderValue, jobValue, city) {
             jobWarn.id = 'jobWarn';
             jobWarn.style.textTransform = 'uppercase';
             jobWarn.style.marginTop = '5px';
-            jobWrong.appendChild(jobWarn);  
-            return false;  
-        }  else return false;        
+            jobWrong.appendChild(jobWarn);   
+        }         
     } else {
         if (document.getElementById('jobWarn')) {
             let jobWarn = document.getElementById('jobWarn');
@@ -93,7 +93,8 @@ function checkNull (name, age, genderValue, jobValue, city) {
         }
     }
 
-    return true;
+    if (valid) return true   
+    return false;
 
 }
 

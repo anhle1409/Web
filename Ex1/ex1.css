@@ -7,16 +7,13 @@ header h1{
     text-align: center;
 }
 
-.form {
-    float: center;
-}
-
 .pic {
     float: left;
     width: 30%;
 }
 
 .form {
+    float: center;
     align-self: center;
     display: inline-block;
     width: 69%;
